@@ -1,0 +1,214 @@
+// Variables
+// Colors
+$Cyan: hsl(180, 66%, 49%);
+$DarkViolet: hsl(257, 27%, 26%);
+$Red: hsl(0, 87%, 67%);
+$Gray: hsl(0, 0%, 75%);
+$GrayishViolet: hsl(257, 7%, 63%);
+$VeryDarkBlue: hsl(255, 11%, 22%);
+$VeryDarkViolet: hsl(260, 8%, 14%);
+//Fonts
+$fontSize: 1.8rem;
+$fontFamily: "Poppins";
+
+@mixin flexCenter($direction, $align, $justify) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+@mixin buttonTransparent() {
+	border: none;
+	background-color: transparent;
+	color: white;
+}
+
+@mixin generalContainer() {
+	@include flexCenter(column, center, center);
+	background-color: transparentize($color: $Gray, $amount: 0.8);
+	gap: 2rem;
+}
+html {
+	font-size: 62.5%;
+}
+
+* {
+	box-sizing: border-box;
+	border: none;
+	font-weight: 500;
+	// border: red solid 1px !important;
+}
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+body {
+	font-size: $fontSize;
+	font-family: $fontFamily, sans-serif;
+	color: $GrayishViolet;
+}
+
+header {
+	margin: 2rem 0rem;
+	height: 5rem;
+	padding: 1rem 2rem;
+	@include flexCenter(row, center, space-between);
+	.header__logo {
+		height: 100%;
+		img {
+			height: 100%;
+		}
+	}
+	.header__nav {
+		height: 100%;
+		button {
+			height: 100%;
+			@include buttonTransparent();
+			img {
+				height: 100%;
+				filter: brightness(0) saturate(100%) invert(67%) sepia(6%)
+					saturate(269%) hue-rotate(208deg) brightness(91%) contrast(93%);
+			}
+		}
+	}
+}
+
+.introduction__container {
+	@include flexCenter(column, center, center);
+	padding-bottom: 10rem;
+	.introduction__image {
+		width: 100%;
+		height: 60vh;
+		background-image: url("./assets/images/illustration-working.svg");
+		background-position: 50px 0px;
+		background-size: 120%;
+		background-repeat: no-repeat;
+	}
+	.introduction__text {
+		@include flexCenter(column, center, center);
+		padding: 0rem 2rem;
+		text-align: center;
+		gap: 1rem;
+		h1 {
+			color: $DarkViolet;
+			margin: 0;
+			font-weight: 700;
+		}
+		button {
+			@include buttonTransparent();
+			width: 150px;
+			padding: 1rem 2rem;
+			background-color: $Cyan;
+			border-radius: 50px;
+		}
+	}
+}
+
+.float__container {
+	@include flexCenter(column, center, space-evenly);
+	height: 150px;
+	width: 90%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-color: $DarkViolet;
+	background-image: url("./assets/images/bg-shorten-mobile.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 10px;
+	transform: translateY(-7rem);
+	input {
+		width: 90%;
+		height: 30%;
+		border-radius: 10px;
+		outline: none;
+		padding: 0rem 2rem;
+	}
+	button {
+		@include buttonTransparent();
+		width: 90%;
+		height: 30%;
+		background-color: $Cyan;
+		border-radius: 10px;
+	}
+}
+.card__container {
+	@include generalContainer();
+	padding: 10rem 2rem;
+}
+.card__link {
+	@include flexCenter(column, flex-start, space-around);
+	width: 100%;
+	min-height: 150px;
+	background-color: white;
+	padding: 2rem;
+	gap: 2rem;
+	.card__longlink {
+		width: 100%;
+		padding-bottom: 1rem;
+		border-bottom: 1px $GrayishViolet solid;
+		a {
+			color: $VeryDarkViolet;
+		}
+	}
+	a {
+		color: $Cyan;
+	}
+	button {
+		@include buttonTransparent();
+		background-color: $Cyan;
+		align-self: center;
+		width: 100%;
+		height: 4rem;
+	}
+}
+.statistics__container {
+	@include generalContainer();
+	text-align: center;
+	position: relative;
+	padding: 0rem 2rem;
+	h2 {
+		color: $DarkViolet;
+		font-weight: 700;
+		font-size: 3rem;
+	}
+}
+.line {
+	position: absolute;
+	width: 5px;
+	height: 1000px;
+	background-color: $Cyan;
+}
+.statistics__cards {
+	@include flexCenter(column, center, center);
+	padding: 5rem 0rem;
+	gap: 10rem;
+}
+.card__general {
+	@include flexCenter(column, center, center);
+	background-color: white;
+	padding: 5rem 2rem;
+	position: relative;
+	min-height: 300px;
+	border-radius: 10px;
+	.card__logo {
+		@include flexCenter(column, center, center);
+		position: absolute;
+		width: 10rem;
+		height: 10rem;
+		background-color: $DarkViolet;
+		top: -5rem;
+		border-radius: 100%;
+		img {
+			width: 50%;
+			height: 50%;
+		}
+	}
+	h3 {
+		color: $DarkViolet;
+		font-weight: 700;
+	}
+}
