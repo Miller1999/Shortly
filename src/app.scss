@@ -22,6 +22,7 @@ $fontFamily: "Poppins";
 	border: none;
 	background-color: transparent;
 	color: white;
+	border-radius: 20px;
 }
 
 @mixin generalContainer() {
@@ -50,6 +51,7 @@ body {
 }
 
 header {
+	position: relative;
 	margin: 2rem 0rem;
 	height: 5rem;
 	padding: 1rem 2rem;
@@ -73,7 +75,39 @@ header {
 		}
 	}
 }
-
+nav {
+	position: absolute;
+	top: 6rem;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	@include flexCenter(column, center, center);
+	background-color: $DarkViolet;
+	width: 90%;
+	border-radius: 20px;
+	text-align: center;
+	padding: 3rem;
+	div {
+		@include flexCenter(column, center, space-around);
+		width: 100%;
+		gap: 2rem;
+	}
+	.nav__info {
+		border-bottom: 1px $GrayishViolet solid;
+		padding: 1rem 0rem;
+	}
+	p {
+		color: white;
+		font-weight: 700;
+	}
+	button {
+		@include buttonTransparent();
+		background-color: $Cyan;
+		width: 100%;
+		padding: 2rem;
+		font-weight: 700;
+	}
+}
 .introduction__container {
 	@include flexCenter(column, center, center);
 	padding-bottom: 10rem;
@@ -210,5 +244,50 @@ header {
 	h3 {
 		color: $DarkViolet;
 		font-weight: 700;
+	}
+}
+.boost__container {
+	@include flexCenter(column, center, center);
+	background-color: $DarkViolet;
+	background-image: url("./assets/images/bg-boost-mobile.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 25rem;
+	h3 {
+		color: white;
+		font-size: 2.5rem;
+		font-weight: 700;
+	}
+	button {
+		@include buttonTransparent();
+		background-color: $Cyan;
+		padding: 1rem 2rem;
+		border-radius: 20px;
+		font-weight: 700;
+	}
+}
+
+footer {
+	@include flexCenter(column, center, center);
+	text-align: center;
+	background-color: $VeryDarkViolet;
+	padding: 5rem;
+	.footer__logo {
+		img {
+			filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+				hue-rotate(336deg) brightness(102%) contrast(101%);
+		}
+	}
+	.footer__info {
+		p:first-child {
+			font-weight: 700;
+			color: white;
+		}
+	}
+	.footer__socialMedia {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
 	}
 }

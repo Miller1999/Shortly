@@ -2,6 +2,7 @@ import Card from "./Card";
 import Brand from "../assets/images/icon-brand-recognition.svg";
 import Records from "../assets/images/icon-detailed-records.svg";
 import Customizable from "../assets/images/icon-fully-customizable.svg";
+import Button from "./Button";
 const Section = ({ kind }) => {
 	const linksPrueba = [
 		{
@@ -55,7 +56,7 @@ const Section = ({ kind }) => {
 						Build your brand{"'"}s recognition and get detailed insights on how
 						your links are performing
 					</p>
-					<button>Get Started</button>
+					<Button>Get Started</Button>
 				</div>
 			</section>
 		);
@@ -94,6 +95,14 @@ const Section = ({ kind }) => {
 						);
 					})}
 				</div>
+			</section>
+		);
+	}
+	if (kind == "boost") {
+		return (
+			<section className="boost__container">
+				<h3>Boost your links today</h3>
+				<button>Get Started</button>
 			</section>
 		);
 	}

@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import Header from "./components/Header";
+import Section from "./components/Section";
+import Footer from "./components/Footer";
 import "normalize.css";
 import "./app.scss";
-import Section from "./components/Section";
 
 function App() {
 	return (
@@ -13,8 +14,9 @@ function App() {
 				<Section kind="float" />
 				<Section kind="links" />
 				<Section kind="statistics" />
+				<Section kind="boost" />
 			</main>
-			<footer></footer>
+			<Footer />
 		</Fragment>
 	);
 }
