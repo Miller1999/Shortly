@@ -8,7 +8,16 @@ const Header = () => {
 	function toggleShow() {
 		setShowNav(!showNav);
 	}
-
+	if (window.screen.availWidth >= 767) {
+		return (
+			<header>
+				<picture className="header__logo">
+					<img src={Logo} alt="Shortly" />
+				</picture>
+				<Nav />
+			</header>
+		);
+	}
 	return (
 		<header>
 			<picture className="header__logo">

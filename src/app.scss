@@ -29,6 +29,9 @@ $fontFamily: "Poppins";
 	@include flexCenter(column, center, center);
 	background-color: transparentize($color: $Gray, $amount: 0.8);
 	gap: 2rem;
+	@media (min-width: 767px) {
+		padding: 0rem 5rem;
+	}
 }
 html {
 	font-size: 62.5%;
@@ -74,6 +77,9 @@ header {
 			}
 		}
 	}
+	@media (min-width: 767px) {
+		padding: 1rem 5rem;
+	}
 }
 nav {
 	position: absolute;
@@ -107,6 +113,33 @@ nav {
 		padding: 2rem;
 		font-weight: 700;
 	}
+	@media (min-width: 767px) {
+		position: inherit;
+		@include flexCenter(row, center, space-between);
+		background-color: transparent;
+		top: auto;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		div {
+			@include flexCenter(row, center, center);
+			height: 100%;
+		}
+		.nav__info {
+			border: none;
+			padding: 0rem;
+		}
+		p {
+			color: $GrayishViolet;
+			font-size: 1.4rem;
+			font-weight: 700;
+		}
+		button {
+			width: auto;
+			height: 100%;
+			padding: 0rem 2rem;
+		}
+	}
 }
 .introduction__container {
 	@include flexCenter(column, center, center);
@@ -135,6 +168,18 @@ nav {
 			padding: 1rem 2rem;
 			background-color: $Cyan;
 			border-radius: 50px;
+		}
+	}
+	@media (min-width: 767px) {
+		@include flexCenter(row-reverse, center, center);
+		padding: 0rem 5rem 10rem 5rem;
+		.introduction__image {
+			background-position: 0px 50px;
+			background-size: 150%;
+		}
+		.introduction__text {
+			@include flexCenter(column, flex-start, center);
+			text-align: start;
 		}
 	}
 }
@@ -168,10 +213,17 @@ nav {
 		background-color: $Cyan;
 		border-radius: 10px;
 	}
+	@media (min-width: 767px) {
+		width: 80%;
+		background-image: url("./assets/images/bg-shorten-desktop.svg");
+	}
 }
 .card__container {
 	@include generalContainer();
 	padding: 10rem 2rem;
+	@media (min-width: 767px) {
+		padding: 10rem 8rem;
+	}
 }
 .card__link {
 	@include flexCenter(column, flex-start, space-around);
@@ -208,6 +260,9 @@ nav {
 		color: $DarkViolet;
 		font-weight: 700;
 		font-size: 3rem;
+	}
+	@media (min-width: 767px) {
+		padding: 0rem 8rem;
 	}
 }
 .line {
