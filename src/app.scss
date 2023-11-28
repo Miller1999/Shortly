@@ -52,6 +52,10 @@ body {
 	font-family: $fontFamily, sans-serif;
 	color: $GrayishViolet;
 }
+button:hover {
+	cursor: pointer;
+	background-color: transparentize($color: $Cyan, $amount: 0.3);
+}
 
 header {
 	position: relative;
@@ -80,6 +84,10 @@ header {
 	@media (min-width: 767px) {
 		padding: 1rem 5rem;
 	}
+	@media (min-width: 899px) {
+		margin-top: 3rem;
+		padding: 1rem 10rem;
+	}
 }
 nav {
 	position: absolute;
@@ -106,6 +114,10 @@ nav {
 		color: white;
 		font-weight: 700;
 	}
+	p:hover {
+		cursor: pointer;
+		color: black;
+	}
 	button {
 		@include buttonTransparent();
 		background-color: $Cyan;
@@ -122,7 +134,7 @@ nav {
 		height: 100%;
 		padding: 0;
 		div {
-			@include flexCenter(row, center, center);
+			@include flexCenter(row, center, flex-end);
 			height: 100%;
 		}
 		.nav__info {
@@ -138,6 +150,11 @@ nav {
 			width: auto;
 			height: 100%;
 			padding: 0rem 2rem;
+		}
+	}
+	@media (min-width: 1400px) {
+		p {
+			font-size: 2rem;
 		}
 	}
 }
@@ -169,17 +186,41 @@ nav {
 			background-color: $Cyan;
 			border-radius: 50px;
 		}
+		button:hover {
+			background-color: transparentize($color: $Cyan, $amount: 0.3);
+		}
 	}
 	@media (min-width: 767px) {
 		@include flexCenter(row-reverse, center, center);
 		padding: 0rem 5rem 10rem 5rem;
 		.introduction__image {
-			background-position: 0px 50px;
+			background-position: 0px 100px;
 			background-size: 150%;
 		}
 		.introduction__text {
 			@include flexCenter(column, flex-start, center);
 			text-align: start;
+		}
+	}
+	@media (min-width: 899px) {
+		padding: 0rem 10rem 10rem 10rem;
+		.introduction__image {
+			background-size: 120%;
+		}
+	}
+	@media (min-width: 1400px) {
+		.introduction__image {
+			height: 100vh;
+			background-size: contain;
+		}
+		.introduction__text {
+			padding: 0rem 10rem;
+			h1 {
+				font-size: 5rem;
+			}
+			p {
+				font-size: 2.5rem;
+			}
 		}
 	}
 }
@@ -213,9 +254,29 @@ nav {
 		background-color: $Cyan;
 		border-radius: 10px;
 	}
+	button:hover {
+		background-color: transparentize($color: $Cyan, $amount: 0.3);
+	}
 	@media (min-width: 767px) {
 		width: 80%;
 		background-image: url("./assets/images/bg-shorten-desktop.svg");
+	}
+	@media (min-width: 899px) {
+		@include flexCenter(row, center, center);
+		padding: 2rem;
+		transform: translateY(-5rem);
+		gap: 2rem;
+		height: 100px;
+		input {
+			height: 5rem;
+		}
+		button {
+			height: 5rem;
+			width: 20rem;
+		}
+	}
+	@media (min-width: 1400px) {
+		width: 72%;
 	}
 }
 .card__container {
@@ -223,6 +284,9 @@ nav {
 	padding: 10rem 2rem;
 	@media (min-width: 767px) {
 		padding: 10rem 8rem;
+	}
+	@media (min-width: 1400px) {
+		padding: 10rem 20rem;
 	}
 }
 .card__link {
@@ -250,6 +314,21 @@ nav {
 		width: 100%;
 		height: 4rem;
 	}
+	button:hover {
+		background-color: transparentize($color: $Cyan, $amount: 0.3);
+	}
+	@media (min-width: 899px) {
+		@include flexCenter(row, center, center);
+		min-height: 100px;
+		gap: 5rem;
+		.card__longlink {
+			padding: 0;
+			border: 0;
+		}
+		button {
+			width: 25rem;
+		}
+	}
 }
 .statistics__container {
 	@include generalContainer();
@@ -264,23 +343,42 @@ nav {
 	@media (min-width: 767px) {
 		padding: 0rem 8rem;
 	}
+	@media (min-width: 1400px) {
+		padding: 0rem 15rem;
+		h2 {
+			font-size: 5rem;
+		}
+		p {
+			font-size: 3rem;
+		}
+	}
 }
 .line {
 	position: absolute;
 	width: 5px;
 	height: 1000px;
 	background-color: $Cyan;
+	@media (min-width: 1400px) {
+		width: 80%;
+		height: 5px;
+		bottom: 40%;
+	}
 }
 .statistics__cards {
 	@include flexCenter(column, center, center);
 	padding: 5rem 0rem;
 	gap: 10rem;
+	@media (min-width: 1400px) {
+		@include flexCenter(row, center, center);
+		gap: 5rem;
+	}
 }
 .card__general {
 	@include flexCenter(column, center, center);
 	background-color: white;
 	padding: 5rem 2rem;
 	position: relative;
+	width: 100%;
 	min-height: 300px;
 	border-radius: 10px;
 	.card__logo {
@@ -299,6 +397,22 @@ nav {
 	h3 {
 		color: $DarkViolet;
 		font-weight: 700;
+	}
+	@media (min-width: 1400px) {
+		@include flexCenter(column, flex-start, center);
+		text-align: start;
+		h3 {
+			font-size: 3rem;
+		}
+		p {
+			font-size: 2.2rem;
+		}
+		&:nth-child(2) {
+			margin-top: 5rem;
+		}
+		&:nth-child(3) {
+			margin-top: 10rem;
+		}
 	}
 }
 .boost__container {
@@ -321,6 +435,15 @@ nav {
 		border-radius: 20px;
 		font-weight: 700;
 	}
+	button:hover {
+		background-color: transparentize($color: $Cyan, $amount: 0.3);
+	}
+	@media (min-width: 1400px) {
+		background-image: url("./assets/images/bg-boost-desktop.svg");
+		h3 {
+			font-size: 3.5rem;
+		}
+	}
 }
 
 footer {
@@ -339,10 +462,22 @@ footer {
 			font-weight: 700;
 			color: white;
 		}
+		p:hover {
+			color: $Cyan;
+			cursor: pointer;
+		}
 	}
 	.footer__socialMedia {
 		display: flex;
 		align-items: center;
 		gap: 2rem;
+		img:hover {
+			filter: brightness(0) saturate(100%) invert(82%) sepia(28%)
+				saturate(1152%) hue-rotate(123deg) brightness(85%) contrast(90%);
+			cursor: pointer;
+		}
+	}
+	@media (min-width: 1400px) {
+		@include flexCenter(row, center, space-evenly);
 	}
 }
