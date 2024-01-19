@@ -2,22 +2,40 @@ import Card from "./Card";
 import Brand from "../assets/images/icon-brand-recognition.svg";
 import Records from "../assets/images/icon-detailed-records.svg";
 import Customizable from "../assets/images/icon-fully-customizable.svg";
-import Button from "./Button";
-const Section = ({ kind }) => {
-	const linksPrueba = [
-		{
-			long: "https://www.frontendmentor.io",
-			short: "htttps://rel.ink/k4lKyk",
-		},
-		{
-			long: "https://www.frontendmentor.io",
-			short: "htttps://rel.ink/k4lKyk",
-		},
-		{
-			long: "https://www.frontendmentor.io",
-			short: "htttps://rel.ink/k4lKyk",
-		},
-	];
+
+const Section = ({
+	kind,
+	setConverted,
+	setOriginal,
+	setLinks,
+	links,
+	original,
+	converted,
+}) => {
+	const convertLink = async () => {
+		try {
+			const response = await fetch(
+				"https://corsproxy.io/?" +
+					encodeURIComponent("https://cleanuri.com/api/v1/shorten"),
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: new URLSearchParams({
+						url: original,
+					}),
+				}
+			);
+			return await response.json();
+		} catch (error) {
+			console.error("Error:", error);
+		}
+	};
+	const urlToConvert = () => {
+		const input = document.getElementById("url");
+		setOriginal(input.value);
+	};
 	const infoCards = [
 		{
 			title: "Brand Recognition",
@@ -41,8 +59,20 @@ const Section = ({ kind }) => {
 	if (kind == "float") {
 		return (
 			<section className="float__container">
-				<input placeholder="Shorten a link here..." />
-				<button>Shorten it</button>
+				<input
+					id="url"
+					placeholder="Shorten a link here..."
+					onBlur={urlToConvert}
+				/>
+				<button
+					onClick={async () => {
+						const data = await convertLink();
+						setLinks([...links, { short: data.result_url, long: original }]);
+						setConverted(data.result_url);
+					}}
+				>
+					Shorten it
+				</button>
 			</section>
 		);
 	}
@@ -56,7 +86,7 @@ const Section = ({ kind }) => {
 						Build your brand{"'"}s recognition and get detailed insights on how
 						your links are performing
 					</p>
-					<Button>Get Started</Button>
+					<button>Get Started</button>
 				</div>
 			</section>
 		);
@@ -64,9 +94,15 @@ const Section = ({ kind }) => {
 	if (kind == "links") {
 		return (
 			<section className="card__container">
-				{linksPrueba.map((link) => {
+				{links.map((link) => {
 					return (
-						<Card link long={link.long} short={link.short} key={link.short} />
+						<Card
+							link
+							long={link.long}
+							short={link.short}
+							key={link.short}
+							url={converted}
+						/>
 					);
 				})}
 			</section>

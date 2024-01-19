@@ -6,6 +6,24 @@ const Card = ({
 	title = "",
 	description = "",
 }) => {
+	function copy() {
+		navigator.clipboard.writeText(short);
+	}
+	const handleClick = () => {
+		const buttons = document.querySelectorAll("#copy");
+		buttons.forEach((button) => {
+			button.addEventListener("click", () => {
+				button.style.backgroundColor = "hsl(257, 27%, 26%)";
+				button.innerText = "Copied!";
+				copy();
+			});
+			const returnButton = () => {
+				button.style.backgroundColor = "hsl(180, 66%, 49%)";
+				button.innerText = "Copy";
+			};
+			setTimeout(returnButton, 2000);
+		});
+	};
 	if (link) {
 		return (
 			<article className="card__link">
@@ -13,7 +31,9 @@ const Card = ({
 					<a href={long}>{long}</a>
 				</div>
 				<a href={short}>{short}</a>
-				<button>Copy</button>
+				<button id="copy" onClick={handleClick}>
+					Copy
+				</button>
 			</article>
 		);
 	} else {
